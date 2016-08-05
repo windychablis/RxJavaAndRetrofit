@@ -1,4 +1,4 @@
-package com.lilosoft.rxjavaandretrofit;
+package com.lilosoft.rxjavaandretrofit.Entity;
 
 /**
  * Created by chablis on 2016/8/3.
@@ -16,6 +16,7 @@ public class IpDetail {
 
     public IpDetail() {
     }
+
 
     public String getCountry() {
         return country;

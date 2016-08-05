@@ -1,4 +1,4 @@
-package com.lilosoft.rxjavaandretrofit;
+package com.lilosoft.rxjavaandretrofit.Entity;
 
 /**
  * Created by chablis on 2016/8/3.
@@ -10,6 +10,7 @@ public class IpBean {
     public String getCode() {
         return code;
     }
+
 
     public void setCode(String code) {
         this.code = code;
