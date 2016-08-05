@@ -4,6 +4,7 @@ import com.lilosoft.rxjavaandretrofit.Entity.HttpResult;
 import com.lilosoft.rxjavaandretrofit.Entity.Subject;
 import com.lilosoft.rxjavaandretrofit.httpService.ApiException;
 import com.lilosoft.rxjavaandretrofit.httpService.MovieService;
+import com.lilosoft.rxjavaandretrofit.subscribers.ProgressSubscriber;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -13,8 +14,8 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
-import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
@@ -59,20 +60,28 @@ public class HttpMethods {
      * @param start      起始位置
      * @param count      获取长度
      */
-    public void getTopMovie(Subscriber<List<Subject>> subscriber, int start, int count) {
+    public void getTopMovie(ProgressSubscriber<List<Subject>> subscriber, int start, int count) {
 //        movieService.getTopMovie(start, count)
 //                .subscribeOn(Schedulers.io())
 //                .unsubscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread())
 //                .subscribe(subscriber);
-        Observable observable=movieService.getTopMovie(start, count)
+        Observable observable = movieService.getTopMovie(start, count)
                 .map(new HttpResultFunc<List<Subject>>());
-        toSubscribe(observable,subscriber);
+        toSubscribe(observable, subscriber);
     }
 
-    private <T> void toSubscribe(Observable<T> o, Subscriber<T> s){
+    private <T> void toSubscribe(Observable<T> o, final ProgressSubscriber<T> s) {
         o.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
+                .doOnSubscribe(new Action0() {
+                    @Override
+                    public void call() {
+                        //TODO 显示dialog
+                        s.showProgressDialog();
+                    }
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(s);
     }
@@ -86,7 +95,7 @@ public class HttpMethods {
 
         @Override
         public T call(HttpResult<T> tHttpResult) {
-            if(tHttpResult.getCount()==0){
+            if (tHttpResult.getCount() == 0) {
                 throw new ApiException(100);
             }
             return tHttpResult.getSubjects();

@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.lilosoft.rxjavaandretrofit.Entity.IpBean;
 import com.lilosoft.rxjavaandretrofit.Entity.Subject;
 import com.lilosoft.rxjavaandretrofit.httpService.IpService;
+import com.lilosoft.rxjavaandretrofit.subscribers.ProgressSubscriber;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
-    private Subscriber<List<Subject>> subscriber;
+    private ProgressSubscriber<List<Subject>> subscriber;
 
     @Bind(R.id.click_me_BN)
     Button click_me_BN;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.click_me_BN)
     public void onClick() {
-        getAddress1();
+        getMovie();
     }
 
     //进行网络请求
@@ -80,18 +81,8 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 使用httpmethod封装的retrofit请求
      */
-    private void getAddress1() {
-        subscriber = new Subscriber<List<Subject>>() {
-            @Override
-            public void onCompleted() {
-                Toast.makeText(MainActivity.this, "Get Top Movie Completed", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                result_TV.setText(e.getMessage());
-            }
-
+    private void getMovie() {
+        subscriber = new ProgressSubscriber<List<Subject>>(this) {
             @Override
             public void onNext(List<Subject> subjects) {
                 result_TV.setText(subjects.toString());
