@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/dl_bg"
+    tools:context="com.lilosoft.outsidescreen.activity.LoginActivity">
+
+    <LinearLayout
+        android:background="@mipmap/dl_bj2"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+    <ImageView
+        android:background="@mipmap/logo3"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="@string/logo_name"
+            android:textSize="40sp"
+            android:layout_marginTop="38dp"
+            android:textColor="@color/color_top_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="46dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:background="@mipmap/work_no_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/et_work_no"
+                android:hint="@string/s_input_work_no"
+                android:textSize="24sp"
+                android:maxLines="1"
+                android:inputType="text"
+                android:layout_marginLeft="26dp"
+                android:textColorHint="@color/dark_gray"
+                android:background="@drawable/edit_bg"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:text="@string/s_login"
+            android:textSize="36sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="70dp"
+            android:layout_width="360dp"
+            android:layout_height="100dp"
+            android:background="@mipmap/dl_btn"/>
+    </LinearLayout>
+
+</RelativeLayout>

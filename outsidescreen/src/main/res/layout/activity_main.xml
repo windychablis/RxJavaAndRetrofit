@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main"
+    android:orientation="vertical"
+    tools:context="com.lilosoft.outsidescreen.activity.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="102dp"
+        android:background="@color/color_top_bg">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"
+            android:src="@mipmap/logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"
+            android:layout_toRightOf="@id/iv_logo"
+            android:text="@string/logo_name"
+            android:textColor="@color/white"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:text="14:38:02"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/tabIndicators"
+            android:layout_width="158dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_radio_button"
+            android:checkedButton="@+id/tabInformationButton"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/tabInformationButton"
+                style="@style/MainTabButton"
+                android:drawableTop="@mipmap/icon_information"
+                android:text="@string/tab_information" />
+
+            <RadioButton
+                android:id="@+id/tabNewsButton"
+                style="@style/MainTabButton"
+                android:drawableTop="@mipmap/icon_news"
+                android:text="@string/tab_news" />
+
+            <RadioButton
+                android:id="@+id/tabNotificationButton"
+                style="@style/MainTabButton"
+                android:drawableTop="@mipmap/icon_notification"
+                android:text="@string/tab_notification" />
+
+            <RadioButton
+                android:id="@+id/tabProblemButton"
+                style="@style/MainTabButton"
+                android:drawableTop="@mipmap/icon_video"
+                android:text="@string/tab_problem" />
+
+            <RadioButton
+                android:id="@+id/tabVideo"
+                style="@style/MainTabButton"
+                android:drawableTop="@mipmap/icon_problem"
+                android:text="@string/tab_video" />
+
+        </RadioGroup>
+
+        <RelativeLayout
+            android:id="@+id/ll_preson"
+            android:layout_width="380dp"
+            android:layout_height="654dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/tabIndicators"
+            android:background="@mipmap/bg_person"
+            android:orientation="vertical">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/iv_person"
+                fresco:actualImageScaleType="fitXY"
+                android:layout_width="204dp"
+                android:layout_height="252dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                fresco:placeholderImage="@mipmap/temp" />
+
+            <TextView
+                android:id="@+id/tv_window1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="320dp"
+                android:text="@string/s_window"
+                android:textColor="@color/light_gray"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_no1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_window1"
+                android:layout_below="@id/tv_window1"
+                android:layout_marginTop="20dp"
+                android:text="@string/s_no"
+                android:textColor="@color/light_gray"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_no2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tv_no1"
+                android:layout_alignBottom="@+id/tv_no1"
+                android:layout_toEndOf="@+id/tv_no1"
+                android:layout_toRightOf="@+id/tv_no1"
+                android:text="100111"
+                android:textColor="@color/light_gray"
+                android:textSize="20sp" />
+
+
+            <TextView
+                android:id="@+id/tv_person1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_window1"
+                android:layout_below="@id/tv_no1"
+                android:layout_marginTop="20dp"
+                android:text="@string/s_person"
+                android:textColor="@color/light_gray"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_person2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tv_person1"
+                android:layout_alignBottom="@+id/tv_person1"
+                android:layout_toEndOf="@+id/tv_person1"
+                android:layout_toRightOf="@+id/tv_person1"
+                android:text="管理员"
+                android:textColor="@color/light_gray"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_phone1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_window1"
+                android:layout_below="@id/tv_person1"
+                android:layout_marginTop="20dp"
+                android:text="@string/s_consult_phone"
+                android:textColor="@color/light_gray"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_phone2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tv_phone1"
+                android:layout_alignBottom="@+id/tv_phone1"
+                android:layout_toEndOf="@+id/tv_phone1"
+                android:layout_toRightOf="@+id/tv_phone1"
+                android:text="85297385"
+                android:textColor="@color/light_gray"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_phone3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_window1"
+                android:layout_below="@id/tv_phone1"
+                android:layout_marginTop="20dp"
+                android:text="@string/s_supervise_phone"
+                android:textColor="@color/light_gray"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_phone4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tv_phone3"
+                android:layout_alignBottom="@+id/tv_phone3"
+                android:layout_toEndOf="@+id/tv_phone3"
+                android:layout_toRightOf="@+id/tv_phone3"
+                android:text="079185737501"
+                android:textColor="@color/light_gray"
+                android:textSize="20sp" />
+
+
+            <Button
+                android:id="@+id/evaluate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="30dp"
+                android:background="@mipmap/evaluate" />
+
+            <Button
+                android:id="@+id/stop_service"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="20dp"
+                android:layout_toLeftOf="@id/evaluate"
+                android:layout_alignParentBottom="true"
+                android:background="@null"
+                android:layout_marginBottom="30dp" />
+
+            <TextView
+                android:id="@+id/tv_window2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tv_window1"
+                android:layout_alignBottom="@+id/tv_window1"
+                android:layout_toEndOf="@+id/tv_window1"
+                android:layout_toRightOf="@+id/tv_window1"
+                android:text="交通大队"
+                android:textColor="@color/light_gray"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="@dimen/fragment_with"
+            android:layout_height="654dp"
+            android:layout_alignBottom="@id/ll_preson"
+            android:layout_gravity="center"
+            android:layout_toRightOf="@id/ll_preson"
+            android:orientation="vertical"></FrameLayout>
+    </RelativeLayout>
+</LinearLayout>

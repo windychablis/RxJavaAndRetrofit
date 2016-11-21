@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">OutSideScreen</string>
+    <string name="tab_information">窗口信息</string>
+    <string name="tab_news">最新要闻</string>
+    <string name="tab_notification">通知公告</string>
+    <string name="tab_video">宣传短片</string>
+    <string name="tab_problem">常见问题</string>
+    <string name="logo_name">满意度双屏交互系统</string>
+    <string name="tips1">尊敬的用户</string>
+    <string name="tips2">您好！请对我的服务进行评价</string>
+    <string name="out_of_service">暂停服务</string>
+    <string name="s_window">窗口：</string>
+    <string name="s_no">人员工号：</string>
+    <string name="s_person">工作人员：</string>
+    <string name="s_consult_phone">咨询电话：</string>
+    <string name="s_supervise_phone">监督电话：</string>
+
+    <string name="s_input_work_no">请输入你的工号</string>
+    <string name="s_login">登录</string>
+
+    <string name="s_requirement">办理条件</string>
+    <string name="s_dept">办理部门</string>
+    <string name="s_material">办理材料</string>
+    <string name="s_subject">办理主体</string>
+    <string name="s_process">办理流程</string>
+    <string name="s_promise_term">承诺期限</string>
+    <string name="s_legal_term">法定期限</string>
+    <string name="s_no_data">暂无数据</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
