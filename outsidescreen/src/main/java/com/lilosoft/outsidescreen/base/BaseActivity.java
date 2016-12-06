@@ -14,12 +14,14 @@ import com.lilosoft.outsidescreen.R;
 import java.io.Serializable;
 
 public class BaseActivity extends FragmentActivity {
+    public AppContext appContext;
     Window _window;
     protected FragmentManager mFragmentManager;
     protected String TAG=this.getClass().getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        appContext= (AppContext) AppContext.get();
         mFragmentManager = getSupportFragmentManager();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);// 横屏
         _window = getWindow();

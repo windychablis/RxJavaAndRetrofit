@@ -6,7 +6,6 @@ package com.lilosoft.outsidescreen.base;
 
 import android.app.Application;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
 import com.lilosoft.outsidescreen.bean.Userinfo;
 
 public class AppContext extends Application {
@@ -18,7 +17,6 @@ public class AppContext extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
-        Fresco.initialize(this);
     }
 
 

@@ -2,6 +2,7 @@ package com.lilosoft.outsidescreen.fragment;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import com.lilosoft.outsidescreen.R;
 import com.lilosoft.outsidescreen.base.BaseFragment;
+import com.lilosoft.outsidescreen.web.WCFService;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -108,17 +110,45 @@ public class EvaluateFragment extends BaseFragment {
 
     @OnClick({R.id.tv_my,R.id.tv_bmy,R.id.tv_fcmy})
     public void btnClick(ImageView iv){
+        //非常满意1  满意2   不满意4
         switch (iv.getId()){
             case R.id.tv_my:
-                mListener.onFragmentInteraction(Uri.parse(TAG));
+                comment(2);
                 break;
             case R.id.tv_bmy:
-                System.out.println("aa:  "+TAG);
+                comment(4);
                 onButtonPressed(Uri.parse(TAG));
                 break;
             case R.id.tv_fcmy:
-                Toast.makeText(mContext, "fcmy", Toast.LENGTH_SHORT).show();
+                comment(1);
                 break;
         }
     }
+
+    public void comment(final int feedback){
+        new AsyncTask<String,Integer,Boolean>(){
+
+            @Override
+            protected Boolean doInBackground(String... params) {
+                boolean flag = false;
+                try {
+                    flag=WCFService.comment(mContext.appContext.user.getId(),feedback);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return flag;
+            }
+
+            @Override
+            protected void onPostExecute(Boolean aBoolean) {
+                super.onPostExecute(aBoolean);
+                if(aBoolean){
+                    Toast.makeText(mContext, "谢谢您的评价！", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }.execute();
+
+    }
+
+
 }

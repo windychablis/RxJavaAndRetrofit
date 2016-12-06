@@ -10,12 +10,13 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.lilosoft.outsidescreen.R;
+import com.lilosoft.outsidescreen.base.AppContext;
 import com.lilosoft.outsidescreen.base.BaseActivity;
 import com.lilosoft.outsidescreen.base.BaseFragment;
 import com.lilosoft.outsidescreen.base.Constant;
@@ -42,6 +43,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
+import io.vov.vitamio.Vitamio;
 
 public class MainActivity extends BaseActivity implements BaseFragment.OnFragmentInteractionListener {
     private static final int msgKey1 = 1;
@@ -66,7 +68,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnFragmen
     @BindView(R.id.stop_service)
     Button stopService;
     //    @BindView(R.id.iv_person)
-    SimpleDraweeView ivPerson;
+    ImageView ivPerson;
 
     private Userinfo userinfo = null;
 
@@ -79,6 +81,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnFragmen
         ButterKnife.bind(this);
         String str = PrefUtils.getUserInfo();
         userinfo = JSON.parseObject(str, Userinfo.class);
+        appContext.user=userinfo;
         getUserPic(userinfo.getId());
 
         handler.removeCallbacks(runnable);
@@ -88,6 +91,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnFragmen
         mFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, informationFragment).commit();
     }
+
 
     @Override
     protected void onResume() {
@@ -110,10 +114,12 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnFragmen
 
             @Override
             protected void onPostExecute(byte[] s) {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(s, 0, s.length);
-                ivPerson = (SimpleDraweeView) findViewById(R.id.iv_person);
-                ivPerson.setImageBitmap(bitmap);
-                super.onPostExecute(s);
+                if(s!=null) {
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(s, 0, s.length);
+                    ivPerson = (ImageView) findViewById(R.id.iv_person);
+                    ivPerson.setImageBitmap(bitmap);
+                    super.onPostExecute(s);
+                }
             }
         }.execute();
     }
@@ -179,6 +185,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnFragmen
             case Constant.WORKINFO:
                 NetWorkInfo netWorkInfo = informationFragment.netWorkInfo;
                 tvPhone2.setText(netWorkInfo.getDepttel());
+                tvWindow2.setText(netWorkInfo.getDeptname());
                 tvPhone4.setText(netWorkInfo.getSupervisiontel());
                 break;
         }
@@ -214,6 +221,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnFragmen
     public boolean logout() {
         PrefUtils.putCacheLoginState(false);
         PrefUtils.saveUserInfo("");
+        MainActivity.this.finish();
         nextActivity(LoginActivity.class);
         return true;
     }

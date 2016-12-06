@@ -3,6 +3,7 @@ package com.lilosoft.outsidescreen.activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -51,12 +52,13 @@ public class LoginActivity extends BaseActivity {
             @Override
             protected void onPostExecute(Userinfo s) {
                 super.onPostExecute(s);
+                Log.d("LoginActivity", s.toString());
                 if (s.getWorkno() != null) {
                     Intent intent = getIntent();
-                    int flag = intent.getIntExtra("flag", 1);
-                    if (flag == 1) {
+//                    int flag = intent.getIntExtra("flag", 1);
+//                    if (flag == 1) {
                         nextActivity(MainActivity.class);
-                    }
+//                    }
                     LoginActivity.this.finish();
                 } else {
                     Toast.makeText(LoginActivity.this, "无效登录信息", Toast.LENGTH_SHORT).show();

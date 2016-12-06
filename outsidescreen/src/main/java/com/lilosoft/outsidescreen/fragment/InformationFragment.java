@@ -148,6 +148,7 @@ public class InformationFragment extends BaseFragment {
             @Override
             protected void onPostExecute(NetWorkInfo s) {
                 super.onPostExecute(s);
+                Log.d("aaa", s.toString());
                 netWorkInfo = s;
                 PrefUtils.saveWorkWindow(netWorkInfo.getWorkwin_id());
                 getDept();

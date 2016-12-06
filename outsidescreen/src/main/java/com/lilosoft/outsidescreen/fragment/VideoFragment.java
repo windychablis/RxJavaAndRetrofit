@@ -9,11 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lilosoft.outsidescreen.R;
+import com.lilosoft.outsidescreen.base.AppContext;
 import com.lilosoft.outsidescreen.base.BaseFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.vov.vitamio.LibsChecker;
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.Vitamio;
 import io.vov.vitamio.widget.MediaController;
@@ -79,7 +79,8 @@ public class VideoFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_video, container, false);
         ButterKnife.bind(this, view);
         // 初始化vitamio播放器
-        Vitamio.isInitialized(mContext);
+        Vitamio.isInitialized(getActivity());
+        play();
         return view;
     }
 
@@ -107,20 +108,17 @@ public class VideoFragment extends BaseFragment {
         mListener = null;
     }
 
-    public void play(){
-        // 插件vitamio框架检查是否可用
-        if (!LibsChecker.checkVitamioLibs(this.getActivity())) {
-            return;
-        }
-        surfaceView.setVideoPath("rtsp://46.249.213.87:554/playlists/brit-asia_hvga.hpl.3gp"); //设置播放路径
+    public void play() {
+        surfaceView.setVideoPath(""); //设置播放路径
         surfaceView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-                surfaceView.start();
+                mp.setPlaybackSpeed(1.0f);
             }
         });
 // 设置video的控制器
-        surfaceView.setMediaController(new MediaController(mContext));
+        surfaceView.setMediaController(new MediaController(getActivity()));
+        surfaceView.requestFocus();
     }
 
 }

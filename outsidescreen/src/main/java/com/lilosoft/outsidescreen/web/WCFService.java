@@ -37,7 +37,7 @@ import java.util.List;
  */
 
 public class WCFService {
-    public static String url = "http://192.168.1.107:9003/SPService.svc";
+    public static String url = "http://10.29.163.150:9003/SPService.svc";
     private Context context;
 
     private ArrayList<HeaderProperty> headerPropertyArrayList;
@@ -291,7 +291,7 @@ public class WCFService {
      * @return
      */
     public static List<NewContext> queryChannelInfoByChannelName(String channelName,
-                                                          String amount) {
+                                                                 String amount) {
         ArrayList<NewContext> cotexts = new ArrayList<NewContext>();
         SoapObject request = new SoapObject("http://tempuri.org/",
                 "ListChannelInfoByChannelName");
@@ -360,6 +360,26 @@ public class WCFService {
         JSONObject jobj = jsonO.getJSONObject("ProjectSummary");
         p = JSON.parseObject(jobj.toString(), Project.class);
         return p;
+    }
+
+    public static boolean comment(String userid, int feedback) throws Exception {
+        boolean flag ;
+        SoapObject request = new SoapObject("http://webservice.egs.lilosoft.com/",
+                "saveOrUpdateForAGM");
+        request.addProperty("userId", userid);
+        request.addProperty("feedback", feedback);
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+                SoapEnvelope.VER11);
+//        envelope.setOutputSoapObject(request);
+        envelope.bodyOut = request;
+        HttpTransportSE trans = new HttpTransportSE("http://10.29.163.150:8899/wisdomgov/ws/feedBackNewService?wsdl");
+        trans.debug = true;
+        trans.call(null,
+                envelope);
+        SoapObject result = (SoapObject) envelope.bodyIn;
+        String jsonVal = result.getProperty(0).toString();
+        int code=JSON.parseObject(jsonVal).getInteger("code");
+        return flag=code==0?true:false;
     }
 
 }

@@ -27,7 +27,7 @@ public class BaseFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // 上下文
-    protected  Context mContext;
+    protected BaseActivity mContext;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -61,7 +61,6 @@ public class BaseFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mContext =  getContext();
     }
 
     @Override
@@ -91,6 +90,7 @@ public class BaseFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        mContext= (BaseActivity) context;
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
