@@ -2,6 +2,7 @@ package com.lilosoft.outsidescreen.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.lilosoft.outsidescreen.R;
 import com.lilosoft.outsidescreen.base.BaseActivity;
@@ -20,6 +21,7 @@ public class StartActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_video);
+        Log.d("LoginActivity", "bbbbbb");
 //        String str = PrefUtils.getUserInfo();
 //        Userinfo userinfo = JSON.parseObject(str, Userinfo.class);
         Intent intent=null;

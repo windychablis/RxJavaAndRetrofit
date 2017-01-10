@@ -1,8 +1,10 @@
 package com.lilosoft.outsidescreen.base;
 
+import android.app.KeyguardManager;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
@@ -29,6 +31,9 @@ public class BaseActivity extends FragmentActivity {
         params.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE;
         _window.setAttributes(params);
         setContentView(R.layout.activity_base);
+        unlock();
+
+
     }
 
     public void nextActivity(Class<?> clazz, boolean isPlayAnim, String name, Serializable s){
@@ -50,5 +55,17 @@ public class BaseActivity extends FragmentActivity {
     }
     public void nextActivity(Class<?> clazz, String name, Serializable s){
         nextActivity(clazz, true, name, s);
+    }
+
+    public void unlock(){
+
+        PowerManager pm = (PowerManager)getSystemService(POWER_SERVICE);
+        PowerManager.WakeLock mWakelock = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP |PowerManager.SCREEN_DIM_WAKE_LOCK, "SimpleTimer");
+        mWakelock.acquire();
+        mWakelock.release();
+        KeyguardManager keyguardManager = (KeyguardManager)getSystemService(KEYGUARD_SERVICE);
+        KeyguardManager.KeyguardLock keyguardLock = keyguardManager.newKeyguardLock("");
+        keyguardLock.disableKeyguard();
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 }
