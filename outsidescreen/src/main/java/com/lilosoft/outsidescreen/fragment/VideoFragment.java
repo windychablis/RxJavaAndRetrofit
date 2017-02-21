@@ -3,7 +3,9 @@ package com.lilosoft.outsidescreen.fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +42,9 @@ public class VideoFragment extends BaseFragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private String path="http://baobab.wdjcdn.com/145076769089714.mp4";
+//    private String path="rtsp://192.168.1.107:554/VideoServer/vts.wmv";
 
     public VideoFragment() {
         // Required empty public constructor
@@ -79,7 +84,7 @@ public class VideoFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_video, container, false);
         ButterKnife.bind(this, view);
         // 初始化vitamio播放器
-        Vitamio.isInitialized(getActivity());
+        Vitamio.isInitialized(mContext);
         play();
         return view;
     }
@@ -109,7 +114,7 @@ public class VideoFragment extends BaseFragment {
     }
 
     public void play() {
-        surfaceView.setVideoPath(""); //设置播放路径
+        surfaceView.setVideoPath(path); //设置播放路径
         surfaceView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
@@ -119,6 +124,14 @@ public class VideoFragment extends BaseFragment {
 // 设置video的控制器
         surfaceView.setMediaController(new MediaController(getActivity()));
         surfaceView.requestFocus();
+
+        surfaceView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.start();
+            }
+
+        });
     }
 
 }

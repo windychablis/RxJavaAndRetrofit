@@ -151,16 +151,18 @@ public class WorkFragment extends BaseFragment {
             @Override
             protected void onPostExecute(Project p) {
                 super.onPostExecute(p);
-                tvTitle.setText(PrefUtils.getWorkWindow() + "号窗口办理事项");
                 projectName.setText(mParam2);
-                tvRequirement2.setText(p.getPremit_cond());
-                tvDept2.setText(p.getAccept_name());
-                tvMaterial2.setText(p.getApply_material());
-                tvSubject2.setText(p.getAccept_name());
-                tvProcess2.setText(StringEscapeUtils.unescapeHtml(StringEscapeUtils.unescapeHtml(p.getProcess())));
-                tvPromise2.setText(p.getPromise_desc());
-                tvLegal2.setText(p.getStatutory_desc());
-                Log.d("InformationFragment", p.toString());
+                if (p != null) {
+                    tvTitle.setText(PrefUtils.getWorkWindow() + "号窗口办理事项");
+                    tvRequirement2.setText(p.getPremit_cond());
+                    tvDept2.setText(p.getAccept_name());
+                    tvMaterial2.setText(p.getApply_material());
+                    tvSubject2.setText(p.getAccept_name());
+                    tvProcess2.setText(StringEscapeUtils.unescapeHtml(StringEscapeUtils.unescapeHtml(p.getProcess())));
+                    tvPromise2.setText(p.getPromise_desc());
+                    tvLegal2.setText(p.getStatutory_desc());
+                    Log.d("InformationFragment", p.toString());
+                }
             }
         }.execute();
     }

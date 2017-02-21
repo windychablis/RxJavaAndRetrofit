@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="72dp"
@@ -15,6 +16,7 @@
         android:textSize="34sp" />
 
     <TextView
+        android:id="@+id/tv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="173dp"
@@ -30,10 +32,17 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/tv_my"
+            android:id="@+id/tv_fcmy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="34dp"
+            android:src="@mipmap/fcmy" />
+
+        <ImageView
+            android:id="@+id/tv_my"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
             android:src="@mipmap/my" />
 
         <ImageView
@@ -43,11 +52,6 @@
             android:layout_marginLeft="48dp"
             android:src="@mipmap/bmy" />
 
-        <ImageView
-            android:id="@+id/tv_fcmy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="48dp"
-            android:src="@mipmap/fcmy" />
+
     </LinearLayout>
 </LinearLayout>

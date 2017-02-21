@@ -3,6 +3,7 @@ package com.lilosoft.outsidescreen.web;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Base64;
+import android.util.Xml;
 
 import com.alibaba.fastjson.JSON;
 import com.lilosoft.outsidescreen.bean.DeptDuty;
@@ -22,22 +23,32 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
+import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by chablis on 2016/11/7.
  */
 
 public class WCFService {
-    public static String url = "http://10.29.163.150:9003/SPService.svc";
+//    public static String url = "http://10.29.163.150:9003/SPService.svc";
+//    public static String http = "http://10.29.163.150";
+        public static String http = "http://192.168.1.107";
+    public static String sgoUrl = http + ":8898/wisdomgov/ws";
+        public static String url = "http://192.168.1.107:9004/SPService.svc";
     private Context context;
 
     private ArrayList<HeaderProperty> headerPropertyArrayList;
@@ -362,24 +373,64 @@ public class WCFService {
         return p;
     }
 
-    public static boolean comment(String userid, int feedback) throws Exception {
-        boolean flag ;
+    public static boolean comment(String userid, int feedback, String remark) throws Exception {
+        boolean flag;
         SoapObject request = new SoapObject("http://webservice.egs.lilosoft.com/",
                 "saveOrUpdateForAGM");
         request.addProperty("userId", userid);
         request.addProperty("feedback", feedback);
+        request.addProperty("remark", remark);
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
                 SoapEnvelope.VER11);
 //        envelope.setOutputSoapObject(request);
         envelope.bodyOut = request;
-        HttpTransportSE trans = new HttpTransportSE("http://10.29.163.150:8899/wisdomgov/ws/feedBackNewService?wsdl");
+        HttpTransportSE trans = new HttpTransportSE(sgoUrl + "/feedBackNewService?wsdl");
         trans.debug = true;
         trans.call(null,
                 envelope);
         SoapObject result = (SoapObject) envelope.bodyIn;
         String jsonVal = result.getProperty(0).toString();
-        int code=JSON.parseObject(jsonVal).getInteger("code");
-        return flag=code==0?true:false;
+        int code = JSON.parseObject(jsonVal).getInteger("code");
+        return flag = code == 0 ? true : false;
+    }
+
+    public static Map<String, String> getVersion(String urlStr) {
+        Map<String, String> result = null;
+        try {
+            URL urlxml = new URL(urlStr);
+            HttpURLConnection conn = (HttpURLConnection) urlxml
+                    .openConnection();
+            conn.setConnectTimeout(5000);
+            conn.setRequestMethod("GET");
+            int code = conn.getResponseCode();
+            if (code == 200) {
+                XmlPullParser parser = Xml.newPullParser();
+                InputStream in = conn.getInputStream();
+                parser.setInput(in, "UTF-8");
+                int type = parser.getEventType();
+                result = new HashMap<String, String>();
+                while (type != XmlPullParser.END_DOCUMENT) {
+                    switch (type) {
+                        case XmlPullParser.START_TAG:
+                            if ("version".equals(parser.getName())) {
+                                result.put("version", parser.nextText());
+                            } else if ("url".equals(parser.getName())) {
+                                result.put("url", parser.nextText());
+                            } else if ("name".equals(parser.getName())) {
+                                result.put("name", parser.nextText());
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                    type = parser.next();
+                }
+            }
+        } catch (Exception e) {
+            // String strErr = e.getMessage();
+            // e.printStackTrace();
+        }
+        return result;
     }
 
 }

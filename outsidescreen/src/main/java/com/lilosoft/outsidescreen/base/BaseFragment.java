@@ -36,8 +36,11 @@ public class BaseFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    protected BaseFragment mFragment;
+
     public BaseFragment() {
         // Required empty public constructor
+        mFragment=this;
     }
 
     /**
@@ -66,6 +69,7 @@ public class BaseFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mFragment=this;
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);

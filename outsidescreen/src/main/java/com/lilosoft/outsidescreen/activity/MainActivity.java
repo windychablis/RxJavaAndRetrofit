@@ -1,14 +1,20 @@
 package com.lilosoft.outsidescreen.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,6 +30,7 @@ import com.lilosoft.outsidescreen.base.Constant;
 import com.lilosoft.outsidescreen.bean.NetWorkInfo;
 import com.lilosoft.outsidescreen.bean.Userinfo;
 import com.lilosoft.outsidescreen.common.PrefUtils;
+import com.lilosoft.outsidescreen.common.UpdateManager;
 import com.lilosoft.outsidescreen.fragment.EvaluateFragment;
 import com.lilosoft.outsidescreen.fragment.InformationFragment;
 import com.lilosoft.outsidescreen.fragment.NewsFragment;
@@ -73,12 +80,22 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnFragmen
 
     private Userinfo userinfo = null;
 
-    private InformationFragment informationFragment = InformationFragment.newInstance(null, null);
+    public InformationFragment informationFragment = InformationFragment.newInstance(null, null);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("lost focus");
+        registerReceiver(receiver,intentFilter);
         setContentView(R.layout.activity_main);
+        //检查更新
+        String uploadXml = WCFService.http+":9002/config.xml";
+        UpdateManager manager = new UpdateManager(MainActivity.this);
+        manager.checkUpdate(uploadXml);
+
+
+
         ButterKnife.bind(this);
         String str = PrefUtils.getUserInfo();
         userinfo = JSON.parseObject(str, Userinfo.class);
@@ -98,6 +115,12 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnFragmen
     protected void onResume() {
         super.onResume();
         fillData();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(receiver);//注销广播接收者
     }
 
     public void getUserPic(final String id) {
@@ -144,8 +167,8 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnFragmen
                 switch (i) {
                     case R.id.tabInformationButton:
                         mFragmentManager.beginTransaction()
-                                .replace(R.id.fragment_container, informationFragment)
-                                .commitAllowingStateLoss();
+                            .replace(R.id.fragment_container, informationFragment)
+                            .commitAllowingStateLoss();
                         break;
                     case R.id.tabNewsButton:
                         mFragmentManager.beginTransaction()
@@ -158,6 +181,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnFragmen
                                 .commitAllowingStateLoss();
                         break;
                     case R.id.tabVideo:
+                        Log.d("MainActivity", "video");
                         mFragmentManager.beginTransaction()
                                 .replace(R.id.fragment_container, VideoFragment.newInstance(null, null))
                                 .commitAllowingStateLoss();
@@ -230,8 +254,9 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnFragmen
     @OnClick(R.id.evaluate)
     public void toEvaluate() {
         if (PrefUtils.getCacheLoginState()) {
+            NetWorkInfo netWorkInfo = informationFragment.netWorkInfo;
             mFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, EvaluateFragment.newInstance(null, null))
+                    .replace(R.id.fragment_container, EvaluateFragment.newInstance(netWorkInfo.getWorkwin_id(), null))
                     .commitAllowingStateLoss();
         } else {
             Intent intent = new Intent(this, LoginActivity.class);
@@ -270,4 +295,13 @@ public class MainActivity extends BaseActivity implements BaseFragment.OnFragmen
         }
         transaction.commit();
     }
+
+    private BroadcastReceiver receiver=new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(intent.getAction().equals("lost focus")){
+                evaluate.setEnabled(false);
+            }
+        }
+    };
 }

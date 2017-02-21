@@ -20,8 +20,7 @@ public class StartActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_video);
-        Log.d("LoginActivity", "bbbbbb");
+        setContentView(R.layout.activity_start);
 //        String str = PrefUtils.getUserInfo();
 //        Userinfo userinfo = JSON.parseObject(str, Userinfo.class);
         Intent intent=null;

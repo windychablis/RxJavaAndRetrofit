@@ -35,6 +35,8 @@
         android:textColor="@color/white"
         android:textSize="30sp" />
 
+
+
     <TextView
         android:id="@+id/project_name"
         android:layout_width="match_parent"
@@ -47,179 +49,175 @@
         android:textColor="@color/darkest_gray"
         android:textSize="26sp" />
 
-    <TextView
-        android:id="@+id/tv_requirement1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <ScrollView
         android:layout_below="@id/project_name"
+        android:scrollbars="none"
         android:layout_marginLeft="26dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="38dp"
-        android:text="@string/s_requirement"
-        android:textColor="@color/light_gray"
-        android:textSize="18sp" />
+        android:layout_marginBottom="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
 
-    <TextView
-        android:id="@+id/tv_requirement2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/project_name"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="38dp"
-        android:layout_toRightOf="@id/tv_requirement1"
-        android:text="@string/s_no_data"
-        android:textColor="@color/light_gray"
-        android:textSize="18sp" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv_requirement1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/s_requirement"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_dept1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_requirement2"
-        android:layout_marginLeft="26dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="18dp"
-        android:text="@string/s_dept"
-        android:textColor="@color/light_gray"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_requirement2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/tv_requirement1"
+            android:text="@string/s_no_data"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_dept2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_requirement2"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="18dp"
-        android:layout_toRightOf="@id/tv_dept1"
-        android:text="@string/s_no_data"
-        android:textColor="@color/light_gray"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_dept1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_requirement2"
+            android:layout_marginTop="18dp"
+            android:text="@string/s_dept"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_material1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_dept2"
-        android:layout_marginLeft="26dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="18dp"
-        android:text="@string/s_material"
-        android:textColor="@color/light_gray"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_dept2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_requirement2"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="18dp"
+            android:layout_toRightOf="@id/tv_dept1"
+            android:text="@string/s_no_data"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_material2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_dept2"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="18dp"
-        android:layout_toRightOf="@id/tv_material1"
-        android:text="@string/s_no_data"
-        android:textColor="@color/light_gray"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_material1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_dept2"
+            android:layout_marginTop="18dp"
+            android:text="@string/s_material"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_subject1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_material2"
-        android:layout_marginLeft="26dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="18dp"
-        android:text="@string/s_subject"
-        android:textColor="@color/light_gray"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_material2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_dept2"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="18dp"
+            android:layout_toRightOf="@id/tv_material1"
+            android:text="@string/s_no_data"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_subject2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_material2"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="18dp"
-        android:layout_toRightOf="@id/tv_subject1"
-        android:text="@string/s_no_data"
-        android:textColor="@color/light_gray"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_subject1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_material2"
+            android:layout_marginTop="18dp"
+            android:text="@string/s_subject"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_process1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_subject2"
-        android:layout_marginLeft="26dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="18dp"
-        android:text="@string/s_process"
-        android:textColor="@color/light_gray"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_subject2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_material2"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="18dp"
+            android:layout_toRightOf="@id/tv_subject1"
+            android:text="@string/s_no_data"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_process2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_subject2"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="18dp"
-        android:layout_toRightOf="@id/tv_process1"
-        android:text="@string/s_no_data"
-        android:textColor="@color/light_gray"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_process1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_subject2"
+            android:layout_marginTop="18dp"
+            android:text="@string/s_process"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_promise1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_process2"
-        android:layout_marginLeft="26dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="18dp"
-        android:text="@string/s_promise_term"
-        android:textColor="@color/light_gray"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_process2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_subject2"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="18dp"
+            android:layout_toRightOf="@id/tv_process1"
+            android:text="@string/s_no_data"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_promise2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_process2"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="18dp"
-        android:layout_toRightOf="@id/tv_promise1"
-        android:text="@string/s_no_data"
-        android:textColor="@color/light_gray"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_promise1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_process2"
+            android:layout_marginTop="18dp"
+            android:text="@string/s_promise_term"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_legal1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_promise2"
-        android:layout_marginLeft="26dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="18dp"
-        android:text="@string/s_legal_term"
-        android:textColor="@color/light_gray"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_promise2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_process2"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="18dp"
+            android:layout_toRightOf="@id/tv_promise1"
+            android:text="@string/s_no_data"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_legal2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_promise2"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="18dp"
-        android:layout_toRightOf="@id/tv_legal1"
-        android:text="@string/s_no_data"
-        android:textColor="@color/light_gray"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_legal1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_promise2"
+            android:layout_marginTop="18dp"
+            android:text="@string/s_legal_term"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp" />
 
+        <TextView
+            android:id="@+id/tv_legal2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_promise2"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="18dp"
+            android:layout_toRightOf="@id/tv_legal1"
+            android:text="@string/s_no_data"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp" />
+    </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

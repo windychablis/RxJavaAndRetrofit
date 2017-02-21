@@ -2,12 +2,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg_fragment"
     tools:context="com.lilosoft.outsidescreen.fragment.NewsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="24dp"
+        android:background="@mipmap/bg_fragment">
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_title"
+        android:background="@mipmap/icon_title"
+        android:layout_marginLeft="30dp"
+        android:text="常见问题"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list"
-        android:layout_margin="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:paddingBottom="50dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

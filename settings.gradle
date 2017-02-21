@@ -1,1 +1,1 @@
-include ':app', ':retrofit', ':outsidescreen'
+include ':app', ':retrofit', ':outsidescreen', ':InitActivity'

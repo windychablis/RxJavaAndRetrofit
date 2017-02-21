@@ -109,6 +109,7 @@
                 <ImageView
                     android:id="@+id/iv_person"
                     android:scaleType="fitXY"
+                    android:src="@mipmap/temp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerHorizontal="true"/>
@@ -192,7 +193,7 @@
                 android:layout_alignBottom="@+id/tv_phone1"
                 android:layout_toEndOf="@+id/tv_phone1"
                 android:layout_toRightOf="@+id/tv_phone1"
-                android:text="85297385"
+                android:text=""
                 android:textColor="@color/light_gray"
                 android:textSize="20sp" />
 
@@ -215,7 +216,7 @@
                 android:layout_alignBottom="@+id/tv_phone3"
                 android:layout_toEndOf="@+id/tv_phone3"
                 android:layout_toRightOf="@+id/tv_phone3"
-                android:text="079185737501"
+                android:text=""
                 android:textColor="@color/light_gray"
                 android:textSize="20sp" />
 
@@ -247,7 +248,7 @@
                 android:layout_alignBottom="@+id/tv_window1"
                 android:layout_toEndOf="@+id/tv_window1"
                 android:layout_toRightOf="@+id/tv_window1"
-                android:text="交通大队"
+                android:text=""
                 android:textColor="@color/light_gray"
                 android:textSize="30sp"
                 android:textStyle="bold" />

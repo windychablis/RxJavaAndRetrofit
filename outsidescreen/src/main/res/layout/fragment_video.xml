@@ -4,10 +4,22 @@
     android:layout_height="match_parent"
     tools:context="com.lilosoft.outsidescreen.fragment.VideoFragment">
 
-    <io.vov.vitamio.widget.VideoView
-        android:id="@+id/surface_view"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+        android:paddingBottom="30dp"
+        android:paddingTop="15dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@mipmap/bg_fragment">
+
+        <io.vov.vitamio.widget.VideoView
+            android:id="@+id/surface_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+
+        </LinearLayout>
+
 </RelativeLayout>

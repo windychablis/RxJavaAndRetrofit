@@ -1,5 +1,7 @@
 package com.lilosoft.outsidescreen.bean;
 
+import android.util.Log;
+
 /**
  * Created by chablis on 2016/11/15.
  */
