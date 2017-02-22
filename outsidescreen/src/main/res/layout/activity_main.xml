@@ -79,13 +79,13 @@
             <RadioButton
                 android:id="@+id/tabProblemButton"
                 style="@style/MainTabButton"
-                android:drawableTop="@mipmap/icon_video"
+                android:drawableTop="@mipmap/icon_problem"
                 android:text="@string/tab_problem" />
 
             <RadioButton
                 android:id="@+id/tabVideo"
                 style="@style/MainTabButton"
-                android:drawableTop="@mipmap/icon_problem"
+                android:drawableTop="@mipmap/icon_video"
                 android:text="@string/tab_video" />
 
         </RadioGroup>

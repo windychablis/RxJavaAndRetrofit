@@ -43,7 +43,7 @@ public class VideoFragment extends BaseFragment {
 
     private OnFragmentInteractionListener mListener;
 
-    private String path="http://baobab.wdjcdn.com/145076769089714.mp4";
+    private String path = "http://baobab.wdjcdn.com/145076769089714.mp4";
 //    private String path="rtsp://192.168.1.107:554/VideoServer/vts.wmv";
 
     public VideoFragment() {

@@ -57,10 +57,10 @@ public class LoginActivity extends BaseActivity {
                 Log.d("LoginActivity", s.toString());
                 if (s.getWorkno() != null) {
                     Intent intent = getIntent();
-//                    int flag = intent.getIntExtra("flag", 1);
-//                    if (flag == 1) {
+                    int flag = intent.getIntExtra("flag", 1);
+                    if (flag == 1) {
                         nextActivity(MainActivity.class);
-//                    }
+                    }
                     LoginActivity.this.finish();
                 } else {
                     Toast.makeText(LoginActivity.this, "无效登录信息", Toast.LENGTH_SHORT).show();

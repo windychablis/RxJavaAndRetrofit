@@ -48,6 +48,7 @@
                 android:layout_marginLeft="26dp"
                 android:textColorHint="@color/dark_gray"
                 android:background="@drawable/edit_bg"
+                android:imeOptions="actionDone"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content" />
         </LinearLayout>
